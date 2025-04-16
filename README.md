@@ -1,4 +1,4 @@
-# ⚔️ **GODMOD CHAT SYSTEM** - DESIGN DOCUMENT
+# ⚔️ **GODGOD CHAT SYSTEM** - DESIGN DOCUMENT
 
 ## ⚡ **ChatGod**
 
