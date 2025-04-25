@@ -7,7 +7,10 @@
 package __
 
 import (
+	context "context"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -15,10 +18,21 @@ import (
 // Requires gRPC-Go v1.62.0 or later.
 const _ = grpc.SupportPackageIsVersion8
 
+const (
+	CacheService_RegisterServer_FullMethodName   = "/cache.cache_service/RegisterServer"
+	CacheService_UnRegisterServer_FullMethodName = "/cache.cache_service/UnRegisterServer"
+	CacheService_GetServerLoad_FullMethodName    = "/cache.cache_service/GetServerLoad"
+	CacheService_UsersByChatId_FullMethodName    = "/cache.cache_service/UsersByChatId"
+)
+
 // CacheServiceClient is the client API for CacheService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CacheServiceClient interface {
+	RegisterServer(ctx context.Context, in *ServerDetails, opts ...grpc.CallOption) (*CommonResponse, error)
+	UnRegisterServer(ctx context.Context, in *ServerDetails, opts ...grpc.CallOption) (*CommonResponse, error)
+	GetServerLoad(ctx context.Context, in *ServerDetails, opts ...grpc.CallOption) (*GetServerLoadResponse, error)
+	UsersByChatId(ctx context.Context, in *ChatDetails, opts ...grpc.CallOption) (*UsersByChatIdResponse, error)
 }
 
 type cacheServiceClient struct {
@@ -29,10 +43,54 @@ func NewCacheServiceClient(cc grpc.ClientConnInterface) CacheServiceClient {
 	return &cacheServiceClient{cc}
 }
 
+func (c *cacheServiceClient) RegisterServer(ctx context.Context, in *ServerDetails, opts ...grpc.CallOption) (*CommonResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CommonResponse)
+	err := c.cc.Invoke(ctx, CacheService_RegisterServer_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cacheServiceClient) UnRegisterServer(ctx context.Context, in *ServerDetails, opts ...grpc.CallOption) (*CommonResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CommonResponse)
+	err := c.cc.Invoke(ctx, CacheService_UnRegisterServer_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cacheServiceClient) GetServerLoad(ctx context.Context, in *ServerDetails, opts ...grpc.CallOption) (*GetServerLoadResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetServerLoadResponse)
+	err := c.cc.Invoke(ctx, CacheService_GetServerLoad_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cacheServiceClient) UsersByChatId(ctx context.Context, in *ChatDetails, opts ...grpc.CallOption) (*UsersByChatIdResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UsersByChatIdResponse)
+	err := c.cc.Invoke(ctx, CacheService_UsersByChatId_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CacheServiceServer is the server API for CacheService service.
 // All implementations must embed UnimplementedCacheServiceServer
 // for forward compatibility
 type CacheServiceServer interface {
+	RegisterServer(context.Context, *ServerDetails) (*CommonResponse, error)
+	UnRegisterServer(context.Context, *ServerDetails) (*CommonResponse, error)
+	GetServerLoad(context.Context, *ServerDetails) (*GetServerLoadResponse, error)
+	UsersByChatId(context.Context, *ChatDetails) (*UsersByChatIdResponse, error)
 	mustEmbedUnimplementedCacheServiceServer()
 }
 
@@ -40,6 +98,18 @@ type CacheServiceServer interface {
 type UnimplementedCacheServiceServer struct {
 }
 
+func (UnimplementedCacheServiceServer) RegisterServer(context.Context, *ServerDetails) (*CommonResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterServer not implemented")
+}
+func (UnimplementedCacheServiceServer) UnRegisterServer(context.Context, *ServerDetails) (*CommonResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UnRegisterServer not implemented")
+}
+func (UnimplementedCacheServiceServer) GetServerLoad(context.Context, *ServerDetails) (*GetServerLoadResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetServerLoad not implemented")
+}
+func (UnimplementedCacheServiceServer) UsersByChatId(context.Context, *ChatDetails) (*UsersByChatIdResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UsersByChatId not implemented")
+}
 func (UnimplementedCacheServiceServer) mustEmbedUnimplementedCacheServiceServer() {}
 
 // UnsafeCacheServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -53,13 +123,102 @@ func RegisterCacheServiceServer(s grpc.ServiceRegistrar, srv CacheServiceServer)
 	s.RegisterService(&CacheService_ServiceDesc, srv)
 }
 
+func _CacheService_RegisterServer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ServerDetails)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CacheServiceServer).RegisterServer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CacheService_RegisterServer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CacheServiceServer).RegisterServer(ctx, req.(*ServerDetails))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CacheService_UnRegisterServer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ServerDetails)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CacheServiceServer).UnRegisterServer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CacheService_UnRegisterServer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CacheServiceServer).UnRegisterServer(ctx, req.(*ServerDetails))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CacheService_GetServerLoad_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ServerDetails)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CacheServiceServer).GetServerLoad(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CacheService_GetServerLoad_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CacheServiceServer).GetServerLoad(ctx, req.(*ServerDetails))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CacheService_UsersByChatId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ChatDetails)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CacheServiceServer).UsersByChatId(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CacheService_UsersByChatId_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CacheServiceServer).UsersByChatId(ctx, req.(*ChatDetails))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // CacheService_ServiceDesc is the grpc.ServiceDesc for CacheService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var CacheService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "cache.cache_service",
 	HandlerType: (*CacheServiceServer)(nil),
-	Methods:     []grpc.MethodDesc{},
-	Streams:     []grpc.StreamDesc{},
-	Metadata:    "cache_service.proto",
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "RegisterServer",
+			Handler:    _CacheService_RegisterServer_Handler,
+		},
+		{
+			MethodName: "UnRegisterServer",
+			Handler:    _CacheService_UnRegisterServer_Handler,
+		},
+		{
+			MethodName: "GetServerLoad",
+			Handler:    _CacheService_GetServerLoad_Handler,
+		},
+		{
+			MethodName: "UsersByChatId",
+			Handler:    _CacheService_UsersByChatId_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "cache_service.proto",
 }

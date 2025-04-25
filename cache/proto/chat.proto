@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package cache;
+
+option go_package = ".";
+
+import "common_response.proto";
+import "user.proto";
+
+message ChatDetails {
+    string chat_id = 1;
+    string chat_name = 2;
+    string chat_type = 3; // e.g., "group", "private"
+}
+
+message UsersByChatIdResponse {
+    repeated UserDetails user_list = 1;
+    CommonResponse status_response = 2;
+}

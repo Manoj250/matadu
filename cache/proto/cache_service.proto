@@ -4,5 +4,13 @@ package cache;
 
 option go_package = ".";
 
+import "socket_server.proto";
+import "chat.proto";
+import "common_response.proto";
+
 service cache_service {
+    rpc RegisterServer(ServerDetails) returns (CommonResponse);
+    rpc UnRegisterServer(ServerDetails) returns (CommonResponse);
+    rpc GetServerLoad(ServerDetails) returns (GetServerLoadResponse);
+    rpc UsersByChatId(ChatDetails) returns (UsersByChatIdResponse);
 }
