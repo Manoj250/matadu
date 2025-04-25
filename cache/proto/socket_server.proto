@@ -25,3 +25,7 @@ message GetServerLoadResponse {
     repeated ServerLoad server_load = 1;
     CommonResponse status_response = 2;
 }
+
+message SetServerLoadRequest {
+    repeated ServerLoad server_load = 1;
+}

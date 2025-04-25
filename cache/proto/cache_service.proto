@@ -7,10 +7,22 @@ option go_package = ".";
 import "socket_server.proto";
 import "chat.proto";
 import "common_response.proto";
+import "user.proto";
+
+import "google/protobuf/empty.proto";
 
 service cache_service {
     rpc RegisterServer(ServerDetails) returns (CommonResponse);
     rpc UnRegisterServer(ServerDetails) returns (CommonResponse);
-    rpc GetServerLoad(ServerDetails) returns (GetServerLoadResponse);
-    rpc UsersByChatId(ChatDetails) returns (UsersByChatIdResponse);
+
+    rpc GetServerLoad(google.protobuf.Empty) returns (GetServerLoadResponse);
+    rpc SetServerLoad(SetServerLoadRequest) returns (CommonResponse);
+
+    rpc RegisterUserToCache(UserDetails) returns (CommonResponse);
+    rpc UnRegisterUserFromCache(UserDetails) returns (CommonResponse);
+    rpc GetUserFromCache(UserDetails) returns (UserDetails); //just id reuired
+
+    rpc RegisterUserToChat(ChatDetails) returns (CommonResponse);
+    rpc UnRegisterUserFromChat(ChatDetails) returns (CommonResponse);
+    rpc GetUsersByChatId(ChatDetails) returns (UsersByChatIdResponse);
 }

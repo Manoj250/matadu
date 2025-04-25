@@ -240,6 +240,53 @@ func (x *GetServerLoadResponse) GetStatusResponse() *CommonResponse {
 	return nil
 }
 
+type SetServerLoadRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ServerLoad []*ServerLoad `protobuf:"bytes,1,rep,name=server_load,json=serverLoad,proto3" json:"server_load,omitempty"`
+}
+
+func (x *SetServerLoadRequest) Reset() {
+	*x = SetServerLoadRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_socket_server_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SetServerLoadRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SetServerLoadRequest) ProtoMessage() {}
+
+func (x *SetServerLoadRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_socket_server_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SetServerLoadRequest.ProtoReflect.Descriptor instead.
+func (*SetServerLoadRequest) Descriptor() ([]byte, []int) {
+	return file_socket_server_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *SetServerLoadRequest) GetServerLoad() []*ServerLoad {
+	if x != nil {
+		return x.ServerLoad
+	}
+	return nil
+}
+
 var File_socket_server_proto protoreflect.FileDescriptor
 
 var file_socket_server_proto_rawDesc = []byte{
@@ -274,7 +321,12 @@ var file_socket_server_proto_rawDesc = []byte{
 	0x6e, 0x73, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x15, 0x2e, 0x63, 0x61, 0x63, 0x68,
 	0x65, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
 	0x52, 0x0e, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x42, 0x03, 0x5a, 0x01, 0x2e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x22, 0x4a, 0x0a, 0x14, 0x53, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4c, 0x6f, 0x61,
+	0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x32, 0x0a, 0x0b, 0x73, 0x65, 0x72, 0x76,
+	0x65, 0x72, 0x5f, 0x6c, 0x6f, 0x61, 0x64, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x11, 0x2e,
+	0x63, 0x61, 0x63, 0x68, 0x65, 0x2e, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4c, 0x6f, 0x61, 0x64,
+	0x52, 0x0a, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x4c, 0x6f, 0x61, 0x64, 0x42, 0x03, 0x5a, 0x01,
+	0x2e, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -289,24 +341,26 @@ func file_socket_server_proto_rawDescGZIP() []byte {
 	return file_socket_server_proto_rawDescData
 }
 
-var file_socket_server_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_socket_server_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_socket_server_proto_goTypes = []any{
 	(*ServerDetails)(nil),         // 0: cache.ServerDetails
 	(*ServerLoad)(nil),            // 1: cache.ServerLoad
 	(*GetServerListResponse)(nil), // 2: cache.GetServerListResponse
 	(*GetServerLoadResponse)(nil), // 3: cache.GetServerLoadResponse
-	(*CommonResponse)(nil),        // 4: cache.CommonResponse
+	(*SetServerLoadRequest)(nil),  // 4: cache.SetServerLoadRequest
+	(*CommonResponse)(nil),        // 5: cache.CommonResponse
 }
 var file_socket_server_proto_depIdxs = []int32{
 	0, // 0: cache.GetServerListResponse.server_list:type_name -> cache.ServerDetails
-	4, // 1: cache.GetServerListResponse.status_response:type_name -> cache.CommonResponse
+	5, // 1: cache.GetServerListResponse.status_response:type_name -> cache.CommonResponse
 	1, // 2: cache.GetServerLoadResponse.server_load:type_name -> cache.ServerLoad
-	4, // 3: cache.GetServerLoadResponse.status_response:type_name -> cache.CommonResponse
-	4, // [4:4] is the sub-list for method output_type
-	4, // [4:4] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	5, // 3: cache.GetServerLoadResponse.status_response:type_name -> cache.CommonResponse
+	1, // 4: cache.SetServerLoadRequest.server_load:type_name -> cache.ServerLoad
+	5, // [5:5] is the sub-list for method output_type
+	5, // [5:5] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_socket_server_proto_init() }
@@ -364,6 +418,18 @@ func file_socket_server_proto_init() {
 				return nil
 			}
 		}
+		file_socket_server_proto_msgTypes[4].Exporter = func(v any, i int) any {
+			switch v := v.(*SetServerLoadRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -371,7 +437,7 @@ func file_socket_server_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_socket_server_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

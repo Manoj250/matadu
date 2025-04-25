@@ -10,4 +10,5 @@ message UserDetails {
     string user_email = 3;
     string user_phone = 4;
     string user_status = 5; // e.g., "active", "inactive"
+    string device_id = 6; // e.g., "device123"
 }
