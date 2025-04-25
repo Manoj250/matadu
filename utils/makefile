@@ -32,7 +32,6 @@ setupGrpc:
 	sudo mv -f /tmp/protoc/bin/protoc /usr/local/bin/ && \
 	sudo mv -f /tmp/protoc/include/* /usr/local/include/ && \
 	rm protoc.zip && \
-	rm -rf /tmp/protoc
 	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 	go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 	mix escript.install hex protobuf 0.14.0

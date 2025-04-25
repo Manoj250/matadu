@@ -17,9 +17,9 @@ defmodule Cache.CacheService.Service do
 
   rpc :GetUserFromCache, Cache.UserDetails, Cache.UserDetails
 
-  rpc :RegisterUserToChat, Cache.ChatDetails, Cache.CommonResponse
+  rpc :RegisterUserToChat, Cache.UserToChat, Cache.CommonResponse
 
-  rpc :UnRegisterUserFromChat, Cache.ChatDetails, Cache.CommonResponse
+  rpc :UnRegisterUserFromChat, Cache.UserToChat, Cache.CommonResponse
 
   rpc :GetUsersByChatId, Cache.ChatDetails, Cache.UsersByChatIdResponse
 end

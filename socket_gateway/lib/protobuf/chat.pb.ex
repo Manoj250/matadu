@@ -16,3 +16,12 @@ defmodule Cache.UsersByChatIdResponse do
   field :user_list, 1, repeated: true, type: Cache.UserDetails, json_name: "userList"
   field :status_response, 2, type: Cache.CommonResponse, json_name: "statusResponse"
 end
+
+defmodule Cache.UserToChat do
+  @moduledoc false
+
+  use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3
+
+  field :chat, 1, type: Cache.ChatDetails
+  field :user, 2, type: Cache.UserDetails
+end

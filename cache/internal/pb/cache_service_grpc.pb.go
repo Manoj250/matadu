@@ -43,8 +43,8 @@ type CacheServiceClient interface {
 	RegisterUserToCache(ctx context.Context, in *UserDetails, opts ...grpc.CallOption) (*CommonResponse, error)
 	UnRegisterUserFromCache(ctx context.Context, in *UserDetails, opts ...grpc.CallOption) (*CommonResponse, error)
 	GetUserFromCache(ctx context.Context, in *UserDetails, opts ...grpc.CallOption) (*UserDetails, error)
-	RegisterUserToChat(ctx context.Context, in *ChatDetails, opts ...grpc.CallOption) (*CommonResponse, error)
-	UnRegisterUserFromChat(ctx context.Context, in *ChatDetails, opts ...grpc.CallOption) (*CommonResponse, error)
+	RegisterUserToChat(ctx context.Context, in *UserToChat, opts ...grpc.CallOption) (*CommonResponse, error)
+	UnRegisterUserFromChat(ctx context.Context, in *UserToChat, opts ...grpc.CallOption) (*CommonResponse, error)
 	GetUsersByChatId(ctx context.Context, in *ChatDetails, opts ...grpc.CallOption) (*UsersByChatIdResponse, error)
 }
 
@@ -126,7 +126,7 @@ func (c *cacheServiceClient) GetUserFromCache(ctx context.Context, in *UserDetai
 	return out, nil
 }
 
-func (c *cacheServiceClient) RegisterUserToChat(ctx context.Context, in *ChatDetails, opts ...grpc.CallOption) (*CommonResponse, error) {
+func (c *cacheServiceClient) RegisterUserToChat(ctx context.Context, in *UserToChat, opts ...grpc.CallOption) (*CommonResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CommonResponse)
 	err := c.cc.Invoke(ctx, CacheService_RegisterUserToChat_FullMethodName, in, out, cOpts...)
@@ -136,7 +136,7 @@ func (c *cacheServiceClient) RegisterUserToChat(ctx context.Context, in *ChatDet
 	return out, nil
 }
 
-func (c *cacheServiceClient) UnRegisterUserFromChat(ctx context.Context, in *ChatDetails, opts ...grpc.CallOption) (*CommonResponse, error) {
+func (c *cacheServiceClient) UnRegisterUserFromChat(ctx context.Context, in *UserToChat, opts ...grpc.CallOption) (*CommonResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CommonResponse)
 	err := c.cc.Invoke(ctx, CacheService_UnRegisterUserFromChat_FullMethodName, in, out, cOpts...)
@@ -167,8 +167,8 @@ type CacheServiceServer interface {
 	RegisterUserToCache(context.Context, *UserDetails) (*CommonResponse, error)
 	UnRegisterUserFromCache(context.Context, *UserDetails) (*CommonResponse, error)
 	GetUserFromCache(context.Context, *UserDetails) (*UserDetails, error)
-	RegisterUserToChat(context.Context, *ChatDetails) (*CommonResponse, error)
-	UnRegisterUserFromChat(context.Context, *ChatDetails) (*CommonResponse, error)
+	RegisterUserToChat(context.Context, *UserToChat) (*CommonResponse, error)
+	UnRegisterUserFromChat(context.Context, *UserToChat) (*CommonResponse, error)
 	GetUsersByChatId(context.Context, *ChatDetails) (*UsersByChatIdResponse, error)
 	mustEmbedUnimplementedCacheServiceServer()
 }
@@ -201,10 +201,10 @@ func (UnimplementedCacheServiceServer) UnRegisterUserFromCache(context.Context, 
 func (UnimplementedCacheServiceServer) GetUserFromCache(context.Context, *UserDetails) (*UserDetails, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserFromCache not implemented")
 }
-func (UnimplementedCacheServiceServer) RegisterUserToChat(context.Context, *ChatDetails) (*CommonResponse, error) {
+func (UnimplementedCacheServiceServer) RegisterUserToChat(context.Context, *UserToChat) (*CommonResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RegisterUserToChat not implemented")
 }
-func (UnimplementedCacheServiceServer) UnRegisterUserFromChat(context.Context, *ChatDetails) (*CommonResponse, error) {
+func (UnimplementedCacheServiceServer) UnRegisterUserFromChat(context.Context, *UserToChat) (*CommonResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UnRegisterUserFromChat not implemented")
 }
 func (UnimplementedCacheServiceServer) GetUsersByChatId(context.Context, *ChatDetails) (*UsersByChatIdResponse, error) {
@@ -358,7 +358,7 @@ func _CacheService_GetUserFromCache_Handler(srv interface{}, ctx context.Context
 }
 
 func _CacheService_RegisterUserToChat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ChatDetails)
+	in := new(UserToChat)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -370,13 +370,13 @@ func _CacheService_RegisterUserToChat_Handler(srv interface{}, ctx context.Conte
 		FullMethod: CacheService_RegisterUserToChat_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CacheServiceServer).RegisterUserToChat(ctx, req.(*ChatDetails))
+		return srv.(CacheServiceServer).RegisterUserToChat(ctx, req.(*UserToChat))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _CacheService_UnRegisterUserFromChat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ChatDetails)
+	in := new(UserToChat)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -388,7 +388,7 @@ func _CacheService_UnRegisterUserFromChat_Handler(srv interface{}, ctx context.C
 		FullMethod: CacheService_UnRegisterUserFromChat_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CacheServiceServer).UnRegisterUserFromChat(ctx, req.(*ChatDetails))
+		return srv.(CacheServiceServer).UnRegisterUserFromChat(ctx, req.(*UserToChat))
 	}
 	return interceptor(ctx, in, info, handler)
 }

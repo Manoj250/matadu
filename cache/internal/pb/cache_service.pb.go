@@ -27,7 +27,7 @@ const file_cache_service_proto_rawDesc = "" +
 	"\n" +
 	"\x13cache_service.proto\x12\x05cache\x1a\x13socket_server.proto\x1a\n" +
 	"chat.proto\x1a\x15common_response.proto\x1a\n" +
-	"user.proto\x1a\x1bgoogle/protobuf/empty.proto2\xab\x05\n" +
+	"user.proto\x1a\x1bgoogle/protobuf/empty.proto2\xa9\x05\n" +
 	"\rcache_service\x12=\n" +
 	"\x0eRegisterServer\x12\x14.cache.ServerDetails\x1a\x15.cache.CommonResponse\x12?\n" +
 	"\x10UnRegisterServer\x12\x14.cache.ServerDetails\x1a\x15.cache.CommonResponse\x12E\n" +
@@ -35,9 +35,9 @@ const file_cache_service_proto_rawDesc = "" +
 	"\rSetServerLoad\x12\x1b.cache.SetServerLoadRequest\x1a\x15.cache.CommonResponse\x12@\n" +
 	"\x13RegisterUserToCache\x12\x12.cache.UserDetails\x1a\x15.cache.CommonResponse\x12D\n" +
 	"\x17UnRegisterUserFromCache\x12\x12.cache.UserDetails\x1a\x15.cache.CommonResponse\x12:\n" +
-	"\x10GetUserFromCache\x12\x12.cache.UserDetails\x1a\x12.cache.UserDetails\x12?\n" +
-	"\x12RegisterUserToChat\x12\x12.cache.ChatDetails\x1a\x15.cache.CommonResponse\x12C\n" +
-	"\x16UnRegisterUserFromChat\x12\x12.cache.ChatDetails\x1a\x15.cache.CommonResponse\x12D\n" +
+	"\x10GetUserFromCache\x12\x12.cache.UserDetails\x1a\x12.cache.UserDetails\x12>\n" +
+	"\x12RegisterUserToChat\x12\x11.cache.UserToChat\x1a\x15.cache.CommonResponse\x12B\n" +
+	"\x16UnRegisterUserFromChat\x12\x11.cache.UserToChat\x1a\x15.cache.CommonResponse\x12D\n" +
 	"\x10GetUsersByChatId\x12\x12.cache.ChatDetails\x1a\x1c.cache.UsersByChatIdResponseB\x03Z\x01.b\x06proto3"
 
 var file_cache_service_proto_goTypes = []any{
@@ -45,10 +45,11 @@ var file_cache_service_proto_goTypes = []any{
 	(*emptypb.Empty)(nil),         // 1: google.protobuf.Empty
 	(*SetServerLoadRequest)(nil),  // 2: cache.SetServerLoadRequest
 	(*UserDetails)(nil),           // 3: cache.UserDetails
-	(*ChatDetails)(nil),           // 4: cache.ChatDetails
-	(*CommonResponse)(nil),        // 5: cache.CommonResponse
-	(*GetServerLoadResponse)(nil), // 6: cache.GetServerLoadResponse
-	(*UsersByChatIdResponse)(nil), // 7: cache.UsersByChatIdResponse
+	(*UserToChat)(nil),            // 4: cache.UserToChat
+	(*ChatDetails)(nil),           // 5: cache.ChatDetails
+	(*CommonResponse)(nil),        // 6: cache.CommonResponse
+	(*GetServerLoadResponse)(nil), // 7: cache.GetServerLoadResponse
+	(*UsersByChatIdResponse)(nil), // 8: cache.UsersByChatIdResponse
 }
 var file_cache_service_proto_depIdxs = []int32{
 	0,  // 0: cache.cache_service.RegisterServer:input_type -> cache.ServerDetails
@@ -58,19 +59,19 @@ var file_cache_service_proto_depIdxs = []int32{
 	3,  // 4: cache.cache_service.RegisterUserToCache:input_type -> cache.UserDetails
 	3,  // 5: cache.cache_service.UnRegisterUserFromCache:input_type -> cache.UserDetails
 	3,  // 6: cache.cache_service.GetUserFromCache:input_type -> cache.UserDetails
-	4,  // 7: cache.cache_service.RegisterUserToChat:input_type -> cache.ChatDetails
-	4,  // 8: cache.cache_service.UnRegisterUserFromChat:input_type -> cache.ChatDetails
-	4,  // 9: cache.cache_service.GetUsersByChatId:input_type -> cache.ChatDetails
-	5,  // 10: cache.cache_service.RegisterServer:output_type -> cache.CommonResponse
-	5,  // 11: cache.cache_service.UnRegisterServer:output_type -> cache.CommonResponse
-	6,  // 12: cache.cache_service.GetServerLoad:output_type -> cache.GetServerLoadResponse
-	5,  // 13: cache.cache_service.SetServerLoad:output_type -> cache.CommonResponse
-	5,  // 14: cache.cache_service.RegisterUserToCache:output_type -> cache.CommonResponse
-	5,  // 15: cache.cache_service.UnRegisterUserFromCache:output_type -> cache.CommonResponse
+	4,  // 7: cache.cache_service.RegisterUserToChat:input_type -> cache.UserToChat
+	4,  // 8: cache.cache_service.UnRegisterUserFromChat:input_type -> cache.UserToChat
+	5,  // 9: cache.cache_service.GetUsersByChatId:input_type -> cache.ChatDetails
+	6,  // 10: cache.cache_service.RegisterServer:output_type -> cache.CommonResponse
+	6,  // 11: cache.cache_service.UnRegisterServer:output_type -> cache.CommonResponse
+	7,  // 12: cache.cache_service.GetServerLoad:output_type -> cache.GetServerLoadResponse
+	6,  // 13: cache.cache_service.SetServerLoad:output_type -> cache.CommonResponse
+	6,  // 14: cache.cache_service.RegisterUserToCache:output_type -> cache.CommonResponse
+	6,  // 15: cache.cache_service.UnRegisterUserFromCache:output_type -> cache.CommonResponse
 	3,  // 16: cache.cache_service.GetUserFromCache:output_type -> cache.UserDetails
-	5,  // 17: cache.cache_service.RegisterUserToChat:output_type -> cache.CommonResponse
-	5,  // 18: cache.cache_service.UnRegisterUserFromChat:output_type -> cache.CommonResponse
-	7,  // 19: cache.cache_service.GetUsersByChatId:output_type -> cache.UsersByChatIdResponse
+	6,  // 17: cache.cache_service.RegisterUserToChat:output_type -> cache.CommonResponse
+	6,  // 18: cache.cache_service.UnRegisterUserFromChat:output_type -> cache.CommonResponse
+	8,  // 19: cache.cache_service.GetUsersByChatId:output_type -> cache.UsersByChatIdResponse
 	10, // [10:20] is the sub-list for method output_type
 	0,  // [0:10] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name

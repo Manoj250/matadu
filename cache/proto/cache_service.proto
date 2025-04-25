@@ -22,7 +22,7 @@ service cache_service {
     rpc UnRegisterUserFromCache(UserDetails) returns (CommonResponse);
     rpc GetUserFromCache(UserDetails) returns (UserDetails); //just id reuired
 
-    rpc RegisterUserToChat(ChatDetails) returns (CommonResponse);
-    rpc UnRegisterUserFromChat(ChatDetails) returns (CommonResponse);
+    rpc RegisterUserToChat(UserToChat) returns (CommonResponse);
+    rpc UnRegisterUserFromChat(UserToChat) returns (CommonResponse);
     rpc GetUsersByChatId(ChatDetails) returns (UsersByChatIdResponse);
 }

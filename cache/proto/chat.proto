@@ -17,3 +17,8 @@ message UsersByChatIdResponse {
     repeated UserDetails user_list = 1;
     CommonResponse status_response = 2;
 }
+
+message UserToChat {
+    ChatDetails chat = 1;
+    UserDetails user = 2;
+}
