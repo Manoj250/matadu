@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package cache;
+
+option go_package = ".";
+
+message MessageDetails {
+    string message_content = 1;
+    string to_user_id = 2;
+    string from_user_id = 3;
+    string sent_at = 4;
+    string chat_id = 5;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package cache;
+
+option go_package = ".";
+
+
+import "common_response.proto";
+import "poke_user.proto";
+
+service SocketService {
+    rpc PokeUser(MessageDetails) returns(CommonResponse);
+}
