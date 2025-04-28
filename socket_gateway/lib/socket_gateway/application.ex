@@ -16,7 +16,8 @@ defmodule SocketGateway.Application do
       # Start a worker by calling: SocketGateway.Worker.start_link(arg)
       # {SocketGateway.Worker, arg},
       # Start to serve requests, typically the last entry
-      SocketGatewayWeb.Endpoint
+      SocketGatewayWeb.Endpoint,
+      {GRPC.Server.Supervisor, {SocketGateway.GRPC.SocketGRPCServer, 50051}}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
