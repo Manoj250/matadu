@@ -1,4 +1,4 @@
-defmodule Cache.MessageDetails do
+defmodule Socketpb.MessageDetails do
   @moduledoc false
 
   use Protobuf, protoc_gen_elixir_version: "0.14.0", syntax: :proto3

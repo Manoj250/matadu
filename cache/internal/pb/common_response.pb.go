@@ -85,7 +85,7 @@ var File_common_response_proto protoreflect.FileDescriptor
 
 const file_common_response_proto_rawDesc = "" +
 	"\n" +
-	"\x15common_response.proto\x12\x05cache\"X\n" +
+	"\x15common_response.proto\x12\bsocketpb\"X\n" +
 	"\x0eCommonResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x12\x12\n" +
 	"\x04code\x18\x02 \x01(\x05R\x04code\x12\x18\n" +
@@ -105,7 +105,7 @@ func file_common_response_proto_rawDescGZIP() []byte {
 
 var file_common_response_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_common_response_proto_goTypes = []any{
-	(*CommonResponse)(nil), // 0: cache.CommonResponse
+	(*CommonResponse)(nil), // 0: socketpb.CommonResponse
 }
 var file_common_response_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type

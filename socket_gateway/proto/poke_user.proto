@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package cache;
+package socketpb;
 
 option go_package = ".";
 

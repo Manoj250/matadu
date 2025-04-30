@@ -17,8 +17,10 @@ defmodule SocketGateway.Application do
       # {SocketGateway.Worker, arg},
       # Start to serve requests, typically the last entry
       SocketGatewayWeb.Endpoint,
-      {GRPC.Server.Supervisor, {SocketGateway.GRPC.SocketGRPCServer, 50051}}
+      {GRPC.Server.Supervisor, endpoint: SocketGateway.Endpoint, port: 50051, start_server: true}
     ]
+
+      IO.puts("gRPC server blasting off on port 50051")
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

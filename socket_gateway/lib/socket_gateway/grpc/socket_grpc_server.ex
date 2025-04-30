@@ -1,11 +1,11 @@
-defmodule SocketGateway.GRPC.SocketGRPCServer do
-  use GRPC.Service, service: SocketGateway.Protobuf.SocketService.Service
+defmodule SocketGateway.SocketService.Server do
+  use GRPC.Server, service: Socketpb.SocketService.Service
 
-  alias SocketGateway.Protobuf.{MessageDetails, CommonResponse}
+  alias Socketpb.{MessageDetails, CommonResponse}
 
-	@spec poke_user(MessageDetails.t(), GRPC.Server.Stream.t()) :: CommonResponse.t()
- def poke_user(%MessageDetails{message_content: message, to_user_id: to_id, from_user_id: from_id, sent_at: sent_at, chat_id: chat_id}, _stream) do
-    IO.inspect(request, label: "Received poke request 🔥")
+  @spec poke_user(MessageDetails.t(), GRPC.Server.Stream.t()) :: CommonResponse.t()
+  def poke_user(%MessageDetails{message_content: msg}, _stream) do
+    IO.inspect(msg, label: "Poked with 🔥")
 
     %CommonResponse{
       message: "Poked successfully 🫱",
@@ -13,5 +13,4 @@ defmodule SocketGateway.GRPC.SocketGRPCServer do
       success: true
     }
   end
-
 end

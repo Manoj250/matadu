@@ -101,7 +101,7 @@ var File_poke_user_proto protoreflect.FileDescriptor
 
 const file_poke_user_proto_rawDesc = "" +
 	"\n" +
-	"\x0fpoke_user.proto\x12\x05cache\"\xab\x01\n" +
+	"\x0fpoke_user.proto\x12\bsocketpb\"\xab\x01\n" +
 	"\x0eMessageDetails\x12'\n" +
 	"\x0fmessage_content\x18\x01 \x01(\tR\x0emessageContent\x12\x1c\n" +
 	"\n" +
@@ -125,7 +125,7 @@ func file_poke_user_proto_rawDescGZIP() []byte {
 
 var file_poke_user_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_poke_user_proto_goTypes = []any{
-	(*MessageDetails)(nil), // 0: cache.MessageDetails
+	(*MessageDetails)(nil), // 0: socketpb.MessageDetails
 }
 var file_poke_user_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type

@@ -24,17 +24,17 @@ var File_socket_service_proto protoreflect.FileDescriptor
 
 const file_socket_service_proto_rawDesc = "" +
 	"\n" +
-	"\x14socket_service.proto\x12\x05cache\x1a\x15common_response.proto\x1a\x0fpoke_user.proto2I\n" +
-	"\rSocketService\x128\n" +
-	"\bPokeUser\x12\x15.cache.MessageDetails\x1a\x15.cache.CommonResponseB\x03Z\x01.b\x06proto3"
+	"\x14socket_service.proto\x12\bsocketpb\x1a\x15common_response.proto\x1a\x0fpoke_user.proto2O\n" +
+	"\rSocketService\x12>\n" +
+	"\bPokeUser\x12\x18.socketpb.MessageDetails\x1a\x18.socketpb.CommonResponseB\x03Z\x01.b\x06proto3"
 
 var file_socket_service_proto_goTypes = []any{
-	(*MessageDetails)(nil), // 0: cache.MessageDetails
-	(*CommonResponse)(nil), // 1: cache.CommonResponse
+	(*MessageDetails)(nil), // 0: socketpb.MessageDetails
+	(*CommonResponse)(nil), // 1: socketpb.CommonResponse
 }
 var file_socket_service_proto_depIdxs = []int32{
-	0, // 0: cache.SocketService.PokeUser:input_type -> cache.MessageDetails
-	1, // 1: cache.SocketService.PokeUser:output_type -> cache.CommonResponse
+	0, // 0: socketpb.SocketService.PokeUser:input_type -> socketpb.MessageDetails
+	1, // 1: socketpb.SocketService.PokeUser:output_type -> socketpb.CommonResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
