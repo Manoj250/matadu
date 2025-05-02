@@ -1,4 +1,4 @@
-.PHONY: protogen setupGrpc
+.PHONY: protogen setupGrpc gqlgen
 
 ELIXIR_PLUGIN := $(shell asdf which protoc-gen-elixir)
 GOPATH_BIN := $(shell realpath $$(go env GOPATH)/bin)
@@ -43,3 +43,24 @@ setupGrpc:
 	mix do local.hex --force, local.rebar --force, escript.install hex protobuf 0.14.0 --force
 	asdf reshim elixir
 	@echo "🎉 protoc and plugins installed like a legend"
+
+
+setupGqlgen:
+	@echo "📦 Installing gqlgen..."
+	@go install github.com/99designs/gqlgen@latest
+	@echo "🔗 Adding $(shell go env GOPATH)/bin to PATH via ~/.zshrc"
+	@grep -qxF 'export PATH="$$PATH:$(shell go env GOPATH)/bin"' ~/.zshrc || \
+		echo 'export PATH="$$PATH:$(shell go env GOPATH)/bin"' >> ~/.zshrc
+	@echo "🎉 gqlgen installed"
+	@echo '✅ PATH updated. Run: source ~/.zshrc'
+
+
+gqlgen:
+	@if [ -z "$(GQL_DIR)" ]; then \
+		echo "❌ Usage: make gqlgen GQL_DIR=./gateway"; \
+		exit 1; \
+	fi
+	@echo "📁 Using GQL_DIR=$(GQL_DIR)"
+	cd $(GQL_DIR) && \
+	go mod tidy && \
+	gqlgen generate
