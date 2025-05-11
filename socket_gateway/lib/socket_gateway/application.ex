@@ -17,13 +17,19 @@ defmodule SocketGateway.Application do
       # {SocketGateway.Worker, arg},
       # Start to serve requests, typically the last entry
       SocketGatewayWeb.Endpoint,
-      {GRPC.Server.Supervisor, endpoint: SocketGateway.Endpoint, port: 50051, start_server: true}
+      {GRPC.Server.Supervisor, endpoint: SocketGateway.Endpoint, port: 50051, start_server: true},
+      %{
+        id: :eredis_cluster,
+        start: {Task, :start_link, [fn -> :eredis_cluster.start() end]}
+      }
     ]
 
-      IO.puts("gRPC server blasting off on port 50051")
+    IO.puts("gRPC server blasting off on port 50051")
+
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
+
     opts = [strategy: :one_for_one, name: SocketGateway.Supervisor]
     Supervisor.start_link(children, opts)
   end

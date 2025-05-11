@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package cache;
+
+option go_package = ".";
+
+import "common_response.proto";
+
+message ServerDetails {
+    string server_address = 1;
+    string server_id = 2;
+}
+
+message ServerLoad {
+    string server_address = 1;
+    int32 load = 2;
+}
+
+message GetServerListResponse {
+    repeated ServerDetails server_list = 1;
+    CommonResponse status_response = 2;
+}
+
+message GetServerLoadResponse {
+    repeated ServerLoad server_load = 1;
+    CommonResponse status_response = 2;
+}
+
+message SetServerLoadRequest {
+    repeated ServerLoad server_load = 1;
+}
