@@ -19,9 +19,9 @@ defmodule SocketGateway.MixProject do
   def application do
     [
       mod: {SocketGateway.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :eredis_cluster]
     ]
-  end
+  end 
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
@@ -43,7 +43,8 @@ defmodule SocketGateway.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:protobuf, "~> 0.14.1"},
-      {:grpc, "~> 0.9"}
+      {:grpc, "~> 0.9"},
+      {:eredis_cluster, "~> 0.9.0"} # Add eredis_cluster dependency
     ]
   end
 
