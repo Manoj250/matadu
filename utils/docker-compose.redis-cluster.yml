@@ -8,7 +8,7 @@ services:
                    --cluster-config-file nodes.conf
                    --cluster-node-timeout 5000
                    --appendonly yes
-                   --cluster-announce-ip 172.28.0.2
+                   --cluster-announce-ip host.docker.internal
                    --cluster-announce-port 6379
                    --cluster-announce-bus-port 16379
     ports:
@@ -25,7 +25,7 @@ services:
                    --cluster-config-file nodes.conf
                    --cluster-node-timeout 5000
                    --appendonly yes
-                   --cluster-announce-ip 172.28.0.3
+                   --cluster-announce-ip host.docker.internal
                    --cluster-announce-port 6379
                    --cluster-announce-bus-port 16379
     ports:
@@ -42,7 +42,7 @@ services:
                    --cluster-config-file nodes.conf
                    --cluster-node-timeout 5000
                    --appendonly yes
-                   --cluster-announce-ip 172.28.0.4
+                   --cluster-announce-ip host.docker.internal
                    --cluster-announce-port 6379
                    --cluster-announce-bus-port 16379
     ports:
@@ -59,7 +59,7 @@ services:
                    --cluster-config-file nodes.conf
                    --cluster-node-timeout 5000
                    --appendonly yes
-                   --cluster-announce-ip 172.28.0.5
+                   --cluster-announce-ip host.docker.internal
                    --cluster-announce-port 6379
                    --cluster-announce-bus-port 16379
     ports:
@@ -76,7 +76,7 @@ services:
                    --cluster-config-file nodes.conf
                    --cluster-node-timeout 5000
                    --appendonly yes
-                   --cluster-announce-ip 172.28.0.6
+                   --cluster-announce-ip host.docker.internal
                    --cluster-announce-port 6379
                    --cluster-announce-bus-port 16379
     ports:
@@ -93,7 +93,7 @@ services:
                    --cluster-config-file nodes.conf
                    --cluster-node-timeout 5000
                    --appendonly yes
-                   --cluster-announce-ip 172.28.0.7
+                   --cluster-announce-ip host.docker.internal
                    --cluster-announce-port 6379
                    --cluster-announce-bus-port 16379
     ports:
