@@ -9,14 +9,3 @@ redis-server --port 6382 --cluster-enabled yes --cluster-config-file nodes_6382.
 redis-server --port 6383 --cluster-enabled yes --cluster-config-file nodes_6383.conf --cluster-node-timeout 5000 &
 redis-server --port 6384 --cluster-enabled yes --cluster-config-file nodes_6384.conf --cluster-node-timeout 5000 &
 
-# Wait a bit to ensure Redis nodes are fully up and running
-echo "Waiting 10 seconds for redis nodes to fully start..."
-sleep 5
-
-# Now, create the cluster
-echo "Creating Redis cluster..."
-yes | redis-cli --cluster create \
-  127.0.0.1:6379 127.0.0.1:6380 127.0.0.1:6381 127.0.0.1:6382 127.0.0.1:6383 127.0.0.1:6384 \
-  --cluster-replicas 1
-
-echo "Cluster setup complete!"

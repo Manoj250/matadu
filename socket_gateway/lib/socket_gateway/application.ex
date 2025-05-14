@@ -18,10 +18,7 @@ defmodule SocketGateway.Application do
       # Start to serve requests, typically the last entry
       SocketGatewayWeb.Endpoint,
       {GRPC.Server.Supervisor, endpoint: SocketGateway.Endpoint, port: 50051, start_server: true},
-      %{
-        id: :eredis_cluster,
-        start: {Task, :start_link, [fn -> :eredis_cluster.start() end]}
-      }
+      SocketGateway.RedisClusterCache
     ]
 
     IO.puts("gRPC server blasting off on port 50051")

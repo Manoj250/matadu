@@ -18,4 +18,6 @@ rm -f nodes_6382.conf
 rm -f nodes_6383.conf
 rm -f nodes_6384.conf
 
+sudo lsof -ti :6379-6384 | xargs sudo kill -9
+
 echo "🔥 Redis cluster dismantled. Back to ashes."

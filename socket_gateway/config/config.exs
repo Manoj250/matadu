@@ -38,6 +38,20 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :socket_gateway, SocketGateway.RedisClusterCache,
+  mode: :redis_cluster,
+  redis_cluster: [
+    configuration_endpoints: [
+      node1: [host: "localhost", port: 6379],
+      node2: [host: "localhost", port: 6380],
+      node3: [host: "localhost", port: 6381],
+      node4: [host: "localhost", port: 6382],
+      node5: [host: "localhost", port: 6383],
+      node6: [host: "localhost", port: 6384]
+    ]
+  ]
+
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
