@@ -30,17 +30,17 @@ func main() {
 	defer logger.Sync()
 
 	redisClient := db.NewRedisClusterClient()
-	// Test Redis cluster set/get 💥
+	// Test Redis cluster set/get 
 	err = redisClient.Set(context.Background(), "swag", "420", 0).Err()
 	if err != nil {
-		logger.Fatal("Failed to set key in Redis bro 💀", zap.Error(err))
+		logger.Fatal("Failed to set key in Redis", zap.Error(err))
 	}
 
 	val, err := redisClient.Get(context.Background(), "swag").Result()
 	if err != nil {
-		logger.Fatal("Couldn't get the key back bro 🤡", zap.Error(err))
+		logger.Fatal("Couldn't get the key back", zap.Error(err))
 	}
-	logger.Info("Redis test key fetched 🎯", zap.String("swag", val))
+	logger.Info("Redis test key fetched", zap.String("swag", val))
 	repo := redis.NewRepo(redisClient, logger)
 	svc := service.NewService(repo, logger)
 

@@ -4,3 +4,7 @@ docker exec -it redis-1 redis-cli --cluster create \
   --cluster-replicas 1
 
 REDIS_CLUSTER_ADDRS=127.0.0.1:6379,127.0.0.1:6380,127.0.0.1:6381,127.0.0.1:6382,127.0.0.1:6383,127.0.0.1:6384
+
+curl -1sLf 'https://dl.redpanda.com/nzc4ZYQK3WRGd9sy/redpanda/cfg/setup/bash.deb.sh' | sudo -E bash
+
+sudo apt install redpanda

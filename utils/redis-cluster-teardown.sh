@@ -17,6 +17,7 @@ rm -f nodes_6381.conf
 rm -f nodes_6382.conf
 rm -f nodes_6383.conf
 rm -f nodes_6384.conf
+rm -f cluster_create_status.txt
 
 sudo lsof -ti :6379-6384 | xargs sudo kill -9
 
