@@ -24,3 +24,5 @@ expect "Can I set the above configuration*" {
 }
 expect eof
 EOF
+
+echo "nodetool -h 127.0.0.1 status -> for helath check"
