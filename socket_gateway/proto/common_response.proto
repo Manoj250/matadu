@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package socketpb;
+
+option go_package = ".";
+
+message CommonResponse {
+    string message = 1;
+    int32 code = 2;
+    bool success = 3;
+}
